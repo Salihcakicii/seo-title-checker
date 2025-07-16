@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>SEO Title Checker</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <h1>SEO Title Checker</h1>
-    <textarea id="titleInput" placeholder="Başlığınızı yazın..."></textarea>
-    <button onclick="checkTitle()">Kontrol Et</button>
-    <div id="result"></div>
+    <h1>🔍 SEO Title Checker</h1>
+    <p class="subtitle">Başlık uzunluğu SEO için çok önemlidir. En fazla 60 karakter önerilir.</p>
+
+    <input type="text" id="titleInput" placeholder="Başlığınızı buraya yazın...">
+    <p id="charCount">0 karakter</p>
+
+    <div id="previewBox" class="preview">
+      <p class="preview-title" id="previewTitle">Başlık burada görünecek</p>
+      <p class="preview-url">www.siteniz.com</p>
+      <p class="preview-desc">Meta açıklamanız burada yer alacak.</p>
+    </div>
+
+    <button id="copyBtn" style="display:none;">Başlığı Kopyala</button>
   </div>
 
   <script src="script.js"></script>
