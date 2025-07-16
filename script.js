@@ -1,32 +1,36 @@
-function checkTitle() {
-  const input = document.getElementById("titleInput").value.trim();
-  const length = input.length;
-  const resultBox = document.getElementById("result");
+const input = document.getElementById("titleInput");
+const count = document.getElementById("charCount");
+const preview = document.getElementById("previewTitle");
+const copyBtn = document.getElementById("copyBtn");
 
-  if (!input) {
-    alert("Lütfen bir başlık girin.");
-    return;
-  }
+input.addEventListener("input", () => {
+  const length = input.value.length;
+  count.textContent = `${length} karakter`;
 
-  let message = `Başlık uzunluğu: ${length} karakter.<br>`;
-
-  if (length < 50) {
-    message += "🔍 Çok kısa. Daha açıklayıcı olabilir.";
+  if (length < 30) {
+    count.style.color = "gray";
   } else if (length <= 60) {
-    message += "✅ Mükemmel! SEO için ideal uzunluk.";
+    count.style.color = "green";
+  } else if (length <= 80) {
+    count.style.color = "orange";
   } else {
-    message += "⚠️ Çok uzun. Google sonuçlarında kesilebilir.";
+    count.style.color = "red";
   }
 
-  // CTA kontrolü
-  const ctaWords = ["şimdi", "en iyi", "rehber", "ücretsiz", "liste", "2025", "kapsamlı"];
-  const foundCTA = ctaWords.filter(word => input.toLowerCase().includes(word));
+  preview.textContent = input.value || "Başlık burada görünecek";
 
-  if (foundCTA.length > 0) {
-    message += `<br>🎯 Başlığınız CTA içeriyor: <strong>${foundCTA.join(", ")}</strong>`;
+  if (input.value.trim() !== "") {
+    copyBtn.style.display = "inline-block";
   } else {
-    message += "<br>💡 Tıklanma oranını artırmak için güçlü kelimeler ekleyin.";
+    copyBtn.style.display = "none";
   }
+});
 
-  resultBox.innerHTML = message;
-}
+copyBtn.addEventListener("click", () => {
+  navigator.clipboard.writeText(input.value).then(() => {
+    copyBtn.textContent = "Kopyalandı!";
+    setTimeout(() => {
+      copyBtn.textContent = "Başlığı Kopyala";
+    }, 1500);
+  });
+});
