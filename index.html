@@ -9,10 +9,46 @@
 <body>
   <div class="container">
     <h1>SEO Title Checker</h1>
+
+    <label>Dil Seç:</label>
+    <select id="languageSelect">
+      <option value="tr">Türkçe</option>
+      <option value="en">English</option>
+    </select>
+
+    <label>Anahtar Kelime:</label>
+    <input type="text" id="keywordInput" placeholder="Anahtar kelimeyi girin..." />
+
+    <label>Marka Adı:</label>
+    <input type="text" id="brandInput" placeholder="Marka adınızı girin..." />
+
     <textarea id="titleInput" placeholder="Başlığı buraya yazın..."></textarea>
-    <p id="charCount">0 karakter</p>
+
+    <div class="info">
+      <p id="charCount">0 karakter</p>
+      <p id="pixelWidth">0 piksel</p>
+    </div>
+
     <p id="feedback"></p>
+    <p id="keywordCheck"></p>
+
+    <div class="serp-toggle">
+      <label><input type="radio" name="view" value="desktop" checked> Masaüstü</label>
+      <label><input type="radio" name="view" value="mobile"> Mobil</label>
+    </div>
+
+    <div class="preview" id="serpPreview">
+      <p class="preview-url">www.orneksite.com › başlık</p>
+      <p id="serpTitle" class="preview-title">Başlık önizlemesi burada görünecek</p>
+      <p class="preview-description">Bu, sayfanın açıklamasının görüneceği alandır. Genellikle 150-160 karakter uzunluğundadır.</p>
+    </div>
+
+    <button id="generateSuggestions">📌 Statik Başlık Önerileri</button>
+    <button id="generateAI">🤖 AI ile Başlık Öner</button>
+
+    <ul id="suggestionsList"></ul>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
