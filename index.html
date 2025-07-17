@@ -1,32 +1,18 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SEO Title Checker</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
     <h1>SEO Title Checker</h1>
-
-    <div class="input-group">
-      <label for="title">Başlık</label>
-      <input type="text" id="title" placeholder="SEO başlığınızı girin...">
-    </div>
-
-    <div class="input-group">
-      <label for="keyword">Anahtar Kelime</label>
-      <input type="text" id="keyword" placeholder="Hedef anahtar kelime">
-    </div>
-
-    <button onclick="checkTitle()">Kontrol Et</button>
-
-    <div class="output-section">
-      <p id="feedback"></p>
-    </div>
+    <textarea id="titleInput" placeholder="Başlığı buraya yazın..."></textarea>
+    <p id="charCount">0 karakter</p>
+    <p id="feedback"></p>
   </div>
-
   <script src="script.js"></script>
 </body>
 </html>
