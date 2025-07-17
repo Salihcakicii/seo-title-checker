@@ -1,22 +1,30 @@
 function checkTitle() {
-  const input = document.getElementById("titleInput").value.trim();
-  const charCount = input.length;
-  const charCountEl = document.getElementById("charCount");
-  const feedbackEl = document.getElementById("feedback");
+  const title = document.getElementById("title").value.trim();
+  const keyword = document.getElementById("keyword").value.trim();
+  const feedback = document.getElementById("feedback");
 
-  charCountEl.textContent = `${charCount} karakter`;
-
-  if (charCount === 0) {
-    feedbackEl.textContent = "Başlık girmediniz.";
-    feedbackEl.className = "feedback-bad";
-  } else if (charCount <= 60) {
-    feedbackEl.textContent = "Harika! Başlığınız SEO uyumlu.";
-    feedbackEl.className = "feedback-good";
-  } else {
-    feedbackEl.textContent = "Uyarı: Başlık 60 karakteri geçti. SEO için çok uzun olabilir.";
-    feedbackEl.className = "feedback-bad";
+  if (!title) {
+    feedback.innerHTML = '<span class="bad">Başlık boş bırakılamaz.</span>';
+    return;
   }
-}
 
-// Canlı karakter sayacı
-document.getElementById("titleInput").addEventListener("input", checkTitle);
+  let lengthFeedback = '';
+  const length = title.length;
+
+  if (length >= 50 && length <= 60) {
+    lengthFeedback = '<span class="good">✅ Uzunluk ideal: ' + length + ' karakter</span>';
+  } else if (length < 50) {
+    lengthFeedback = '<span class="warning">⚠️ Kısa: ' + length + ' karakter (50-60 önerilir)</span>';
+  } else {
+    lengthFeedback = '<span class="warning">⚠️ Uzun: ' + length + ' karakter (maks. 60 önerilir)</span>';
+  }
+
+  let keywordFeedback = '';
+  if (keyword && title.toLowerCase().includes(keyword.toLowerCase())) {
+    keywordFeedback = '<span class="good">✅ Anahtar kelime içeriyor</span>';
+  } else {
+    keywordFeedback = '<span class="bad">❌ Anahtar kelime bulunamadı</span>';
+  }
+
+  feedback.innerHTML = lengthFeedback + '<br>' + keywordFeedback;
+}
