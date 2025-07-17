@@ -1,28 +1,35 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SEO Title Checker</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h1>🔍 SEO Title Checker</h1>
-    <p class="subtitle">Başlık uzunluğu SEO için çok önemlidir. En fazla 60 karakter önerilir.</p>
+    <h1>SEO Title Checker</h1>
 
-    <input type="text" id="titleInput" placeholder="Başlığınızı buraya yazın...">
-    <p id="charCount">0 karakter</p>
+    <label for="title">Başlığı Girin:</label>
+    <input type="text" id="title" placeholder="Örnek: En İyi SEO Araçları - 2025 Rehberi" />
 
-    <div id="previewBox" class="preview">
-      <p class="preview-title" id="previewTitle">Başlık burada görünecek</p>
-      <p class="preview-url">www.siteniz.com</p>
-      <p class="preview-desc">Meta açıklamanız burada yer alacak.</p>
+    <label for="keywords">Anahtar Kelimeler (virgülle):</label>
+    <input type="text" id="keywords" placeholder="örnek: SEO, araçlar, rehber" />
+
+    <button id="checkBtn">Kontrol Et</button>
+
+    <div class="preview-box">
+      <h2>Google Görünümü</h2>
+      <div id="preview"></div>
     </div>
 
-    <button id="copyBtn" style="display:none;">Başlığı Kopyala</button>
+    <div class="result-box">
+      <p><strong>Karakter Sayısı:</strong> <span id="charCount"></span></p>
+      <p><strong>Anahtar Kelime Kapsamı:</strong> <span id="keywordCoverage"></span></p>
+      <p><strong>Tekrarlanan Kelimeler:</strong> <span id="repeatedWords"></span></p>
+      <p><strong>Durum:</strong> <span id="statusText"></span></p>
+    </div>
   </div>
-
   <script src="script.js"></script>
 </body>
 </html>
