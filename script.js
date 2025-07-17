@@ -1,30 +1,27 @@
-function checkTitle() {
-  const title = document.getElementById("title").value.trim();
-  const keyword = document.getElementById("keyword").value.trim();
-  const feedback = document.getElementById("feedback");
+const titleInput = document.getElementById("titleInput");
+const charCount = document.getElementById("charCount");
+const feedback = document.getElementById("feedback");
 
-  if (!title) {
-    feedback.innerHTML = '<span class="bad">Başlık boş bırakılamaz.</span>';
-    return;
-  }
+titleInput.addEventListener("input", () => {
+  const text = titleInput.value.trim();
+  const length = text.length;
 
-  let lengthFeedback = '';
-  const length = title.length;
+  charCount.textContent = `${length} karakter`;
 
-  if (length >= 50 && length <= 60) {
-    lengthFeedback = '<span class="good">✅ Uzunluk ideal: ' + length + ' karakter</span>';
-  } else if (length < 50) {
-    lengthFeedback = '<span class="warning">⚠️ Kısa: ' + length + ' karakter (50-60 önerilir)</span>';
+  if (length === 0) {
+    feedback.textContent = "";
+    feedback.style.color = "#333";
+  } else if (length < 30) {
+    feedback.textContent = "⚠️ Başlık çok kısa";
+    feedback.style.color = "orange";
+  } else if (length <= 60) {
+    feedback.textContent = "✅ SEO için ideal uzunluk";
+    feedback.style.color = "green";
+  } else if (length <= 70) {
+    feedback.textContent = "ℹ️ Kabul edilebilir ama biraz uzun";
+    feedback.style.color = "#007bff";
   } else {
-    lengthFeedback = '<span class="warning">⚠️ Uzun: ' + length + ' karakter (maks. 60 önerilir)</span>';
+    feedback.textContent = "❌ Başlık çok uzun (arama sonuçlarında kesilebilir)";
+    feedback.style.color = "red";
   }
-
-  let keywordFeedback = '';
-  if (keyword && title.toLowerCase().includes(keyword.toLowerCase())) {
-    keywordFeedback = '<span class="good">✅ Anahtar kelime içeriyor</span>';
-  } else {
-    keywordFeedback = '<span class="bad">❌ Anahtar kelime bulunamadı</span>';
-  }
-
-  feedback.innerHTML = lengthFeedback + '<br>' + keywordFeedback;
-}
+});
