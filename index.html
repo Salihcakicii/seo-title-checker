@@ -2,34 +2,23 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SEO Title Checker</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h1>SEO Title Checker</h1>
+    <h1>SEO Başlık Kontrolü</h1>
 
-    <label for="title">Başlığı Girin:</label>
-    <input type="text" id="title" placeholder="Örnek: En İyi SEO Araçları - 2025 Rehberi" />
+    <label for="titleInput">Başlık Girin:</label>
+    <input type="text" id="titleInput" maxlength="100" placeholder="Başlığınızı buraya yazın" />
 
-    <label for="keywords">Anahtar Kelimeler (virgülle):</label>
-    <input type="text" id="keywords" placeholder="örnek: SEO, araçlar, rehber" />
+    <div id="charCount">0 karakter</div>
+    <div id="feedback"></div>
 
-    <button id="checkBtn">Kontrol Et</button>
-
-    <div class="preview-box">
-      <h2>Google Görünümü</h2>
-      <div id="preview"></div>
-    </div>
-
-    <div class="result-box">
-      <p><strong>Karakter Sayısı:</strong> <span id="charCount"></span></p>
-      <p><strong>Anahtar Kelime Kapsamı:</strong> <span id="keywordCoverage"></span></p>
-      <p><strong>Tekrarlanan Kelimeler:</strong> <span id="repeatedWords"></span></p>
-      <p><strong>Durum:</strong> <span id="statusText"></span></p>
-    </div>
+    <button onclick="checkTitle()">Kontrol Et</button>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
